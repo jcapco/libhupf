@@ -123,7 +123,7 @@
 				UseUnicodeResponseFiles="false"
 				Optimization="1"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\inc;&quot;$(MY_EXT)\lib_boost\1.46.1\inc&quot;;&quot;$(COMMON_DEV)\lib_utils\inc&quot;;"
+				AdditionalIncludeDirectories="..\inc;&quot;$(MY_EXT)\lib_boost\1.46.1\inc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;LIBHUPF_EXPORTS;JDEBUG"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"

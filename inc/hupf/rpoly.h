@@ -80,6 +80,10 @@ public:
     return results;
   }
 
+#ifndef _MSC_VER
+  #pragma GCC diagnostic push 
+  #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
   int rpoly(double *op, int degree, double *zeror, double *zeroi, int info[] )
   {
     double t,aa,bb,cc,*temp,factor,rot;
@@ -637,6 +641,10 @@ _50:
     }
   }
 
+#ifndef _MSC_VER
+  #pragma GCC diagnostic pop
+#endif  
+  
   /*  This routine calculates scalar quantities used to
    *  compute the next k polynomial and new estimates of
    *  the quadratic coefficients.

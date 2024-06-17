@@ -67,7 +67,6 @@ public:
       else if (!(fabs(a.alpha[0])<EPSILON || fabs(a.a[0])<EPSILON)) //RRR Tv3 possible
       {
     		manifoldsUsed[0]=3;
-    		//std::cout << "T(v3)\n";
         h.push_back(h1_tc_v3(a));
         h.push_back(h2_tc_v3(a));
         h.push_back(h3_tc_v3(a));
@@ -76,7 +75,6 @@ public:
       else if (!(fabs(a.alpha[1])<EPSILON || fabs(a.a[1])<EPSILON)) //RRR Tv1 possible
       {
     		manifoldsUsed[0]=1;
-        //std::cout << "T(v1)\n";
         h.push_back(h1_tc_v1(a));
         h.push_back(h2_tc_v1(a));
         h.push_back(h3_tc_v1(a));
@@ -86,7 +84,6 @@ public:
         fabs(a.alpha[1]+Math::pi/2)<EPSILON) && fabs(a.d[1])<EPSILON)) //RRR Tv2 possible
       {
 		manifoldsUsed[0]=2;
-        //std::cout << "T(v2)\n";
         h.push_back(h1_tc_v2(a));
         h.push_back(h2_tc_v2(a));
         h.push_back(h3_tc_v2(a));
@@ -137,7 +134,7 @@ public:
       if (!(fabs(a.alpha[4])<EPSILON || fabs(a.a[4])<EPSILON))
       {
         manifoldsUsed[1]=3;
-		    std::cout << "T(v3)\n";
+		    //std::cout << "T(v3)\n";
         h.push_back(h1_tc_v3(a));
         h.push_back(h2_tc_v3(a));
         h.push_back(h3_tc_v3(a));
@@ -146,7 +143,7 @@ public:
       else if (!(fabs(a.alpha[3])<EPSILON || fabs(a.a[3])<EPSILON))
 	    {
 		    manifoldsUsed[1]=4;
-        std::cout << "T(v4)\n";
+        //std::cout << "T(v4)\n";
         h.push_back(h1_v4q(a));
         h.push_back(h2_v4q(a));
         h.push_back(h3_v4q(a));
@@ -155,7 +152,7 @@ public:
       else if (!((fabs(a.alpha[3]-PI/2)<EPSILON || fabs(a.alpha[3]+PI/2)<EPSILON) && (fabs(a.alpha[4]-PI/2)<EPSILON || fabs(a.alpha[4]+PI/2)<EPSILON) && fabs(a.d[4])<EPSILON))
       {
         manifoldsUsed[1]=5;
-		    std::cout << "T(v5)\n";
+		    //std::cout << "T(v5)\n";
         h.push_back(h1_v5q(a));
         h.push_back(h2_v5q(a));
         h.push_back(h3_v5q(a));

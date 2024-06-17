@@ -51,23 +51,6 @@ public:
     hasPolyElements = m.hasPolyElements;
   };
 
-
-  /**
-   * Creates real coefficient type matrix with n rows and m columns.
-   * @param num number of rows
-   * @param cols number of columns
-   * */
-  Matrix(int num, int cols)
-  {
-    numRows = num;
-    numCols = cols;
-    std::vector<double> tmp;
-    tmp.assign(cols,0.0);
-    m_matrix.assign(num,tmp);
-
-    hasPolyElements=false;
-  };
-
   /**
   *Square diagonal matrix of width d.size() and diagonal entries d
   **/
@@ -88,20 +71,32 @@ public:
     };
   };
 
+
   /**
-   * Creates polynomial coefficient type matrix with n rows and m columns.
+   * Creates polynomial coefficient or numerical type matrix with n rows and m columns.
    * @param num number of rows
    * @param cols number of columns
    * @param poly indicates polynomial coefficient
    * */
-  Matrix(int num, int cols, bool poly)
+  Matrix(int num, int cols, bool poly = false)
   {
     numRows = num;
     numCols = cols;
-    std::vector<Polynomial> tmp;
-    tmp.assign(cols,Polynomial());
-    p_matrix.assign(num,tmp);
-    hasPolyElements=true;
+    
+    if (poly)
+    {
+      std::vector<Polynomial> tmp;
+      tmp.assign(cols,Polynomial());
+      p_matrix.assign(num,tmp);
+      hasPolyElements=true;
+    }
+    else
+    {
+      std::vector<double> tmp;
+      tmp.assign(cols,0.0);
+      m_matrix.assign(num,tmp);
+      hasPolyElements=false;
+    }
   };
 
   /**
@@ -498,7 +493,7 @@ public:
         mat.p_matrix[i][j] = mat.p_matrix[i][j] * mat.p_matrix[0][0] - subtract_me;
       }
     }
-    Matrix subMat(mat.numRows-1,mat.numCols-1,true);
+    Matrix subMat(mat.numRows-1,mat.numCols-1);
     for(int i=0; i<subMat.numRows; i++)
       for(int j=0; j<subMat.numCols; j++)
         subMat.p_matrix[i][j] = mat.p_matrix[i+1][j+1];
@@ -864,7 +859,7 @@ public:
     {
       Matrix res;
       if (hasPolyElements && mat.hasPolyElements)
-        res = Matrix(numRows,mat.numCols,true);
+        res = Matrix(numRows,mat.numCols);
       else
         res = Matrix(numRows,mat.numCols);
       if (!res.hasPolyElements)
@@ -899,7 +894,7 @@ public:
     {
       Matrix res;
       if (hasPolyElements && mat.hasPolyElements)
-        res = Matrix(numRows,numCols,true);
+        res = Matrix(numRows,numCols);
       else
         res = Matrix(numRows,numCols);
 
@@ -934,7 +929,7 @@ public:
       Matrix *res;
 
       if (hasPolyElements && mat.hasPolyElements)
-        res=new Matrix(numRows,numCols,true);
+        res=new Matrix(numRows,numCols);
       else
         res=new Matrix(numRows,numCols);
 
@@ -968,7 +963,7 @@ public:
     Matrix *res;
 
     if (hasPolyElements)
-      res=new Matrix(numRows,numCols,true);
+      res=new Matrix(numRows,numCols);
     else
       res=new Matrix(numRows,numCols);
 

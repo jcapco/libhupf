@@ -1,7 +1,5 @@
 https://git.uibk.ac.at/c8441187/libhupf.git
 
-Original Code Written By:
-Alfred Angerer
+Originally written by Alfred Angerer as an executable.
 
-Modifications By (mostly for RRP inverse kinematics):
-Jose Capco
+Improvements (e.g. RRP inverse kinematics), export as library, system independent code and further maintainenance by Jose Capco

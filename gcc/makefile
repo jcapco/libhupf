@@ -3,8 +3,6 @@ VPATH = ../src
 
 print-%  : ; @echo $* = $($*)
 
-#RM = del /f /q
-
 CC = g++
 #exclude empty.cpp
 src = $(filter-out ../src/empty.cpp, $(wildcard ../src/*.cpp))
@@ -36,8 +34,7 @@ $(objdir)/%.o: %.cpp
 libhupf: $(obj)
   @echo "Linking..."
   $(CC) $(CXXFLAGS) -Wno-maybe-uninitialized $(obj) -shared -o $(dllfile) $(LDFLAGS) $(libs) 
-#-Wl,--verbose
-#-Wno-maybe-uninitialized 
+#-Wl,--verbose 
   
 #.PHONY: clean, no padding with ifeq!!
 clean:  

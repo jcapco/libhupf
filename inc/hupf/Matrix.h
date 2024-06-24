@@ -366,7 +366,7 @@ public:
       minors = newDet;
       if(newDet.size() == 1)
       {
-        boost::unordered_map<string,Polynomial>::iterator it=newDet.begin();
+        unordered_map<string,Polynomial>::iterator it=newDet.begin();
         res = (*it).second;
       }
       newDet.clear();
@@ -389,8 +389,8 @@ public:
     if(n>10)
       return myDeterminant_orig(m);
     int key=0;
-    boost::unordered_map<int, Polynomial> minors;
-    boost::unordered_map<int, Polynomial> newDet;
+    unordered_map<int, Polynomial> minors;
+    unordered_map<int, Polynomial> newDet;
     for(int i=0; i<n; i++)
     {
       minors[i]=m.p_matrix[i][n-1];

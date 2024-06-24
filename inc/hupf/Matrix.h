@@ -6,8 +6,9 @@
 
 #include <tr1/unordered_map>
 
-#if defined(_WIN32) || defined(_WIN64)
-   using namespace boost;
+//#if _MSC_VER <= 1500
+#ifdef _MSC_VER
+  using namespace boost;
   //#include <boost/unordered_map.hpp>
   #pragma warning( push )
   //4996 sprintf, stdio unsafe

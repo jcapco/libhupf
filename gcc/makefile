@@ -3,23 +3,25 @@ VPATH = ../src
 
 print-%  : ; @echo $* = $($*)
 
-RM = del /f /q
+#RM = del /f /q
+
 CC = g++
 #exclude empty.cpp
 src = $(filter-out ../src/empty.cpp, $(wildcard ../src/*.cpp))
 
 objdir=./release
-dllfile=$(objdir)/libhupf.dll
+dllfile=$(objdir)/libhupf.a
 _obj1 = $(patsubst %.cpp,%.o,$(src))
 obj = $(patsubst %.o,$(objdir)/%.o,$(notdir $(_obj1)))
 libs = 
 
+# needs apt-get install gcc-multilib g++-multilib
 INCLUDES = -I../inc
-CXXFLAGS=-DNDEBUG -DLIBHUPF_EXPORTS -O3 -g -s -flto -Wall -Wextra -m32 -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-parentheses -fopenmp
+CXXFLAGS=-DNDEBUG -DLIBHUPF_EXPORTS -O3 -g -s -flto -Wall -Wextra -m32 -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-parentheses -Wno-unused-function -fopenmp -std=c++11
 # -std=c++98 
 
 #link flags
-LDFLAGS = -lstdc++
+LDFLAGS = -fno-use-linker-plugin -lstdc++
 
 # rule to generate a dep file by using the C preprocessor
 # (see man cpp for details on the -MM and -MT options)
@@ -36,6 +38,11 @@ libhupf: $(obj)
 #-Wl,--verbose
 #-Wno-maybe-uninitialized 
   
-#.PHONY: clean .. todo.. I don't think this is working!
-clean:
-  $(RM) $(subst /,\,$(obj)) $(subst /,\,$(dllfile))
+#.PHONY: clean, no padding with ifeq!!
+clean:  
+ifeq ($(OS), Windows_NT)
+  del /f /q $(subst /,\,$(obj)) $(subst /,\,$(dllfile))
+else
+  rm -f $(obj) $(dllfile)
+endif
+

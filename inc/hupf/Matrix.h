@@ -5,12 +5,12 @@
 #pragma once
 
 #if defined(_WIN32) || defined(_WIN64)
-#include <boost/unordered_map.hpp>
-#pragma warning( push )
-//4996 sprintf, stdio unsafe
-#pragma warning(disable: 4996 4305)
+  #include <boost/unordered_map.hpp>
+  #pragma warning( push )
+  //4996 sprintf, stdio unsafe
+  #pragma warning(disable: 4996 4305)
 #else
-#include <unordered_map>
+  #include <unordered_map>
 #endif
 #include "Polynomial.h"
 #include "Complex.h"

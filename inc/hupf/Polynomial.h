@@ -6,9 +6,9 @@
 
 #include <vector>
 //#include <iostream>
-#if defined(_WIN32) || defined(_WIN64)
-# include<math.h>
-#endif
+//#if defined(_WIN32) || defined(_WIN64)
+#include<math.h>
+//#endif
 
 namespace LibHUPF{
 

@@ -4,11 +4,15 @@
  **/
 #pragma once
 
+#include <tr1/unordered_map>
+
 #if defined(_WIN32) || defined(_WIN64)
-  #include <boost/unordered_map.hpp>
+   using namespace boost;
+  //#include <boost/unordered_map.hpp>
   #pragma warning( push )
   //4996 sprintf, stdio unsafe
-  #pragma warning(disable: 4996 4305)
+  #pragma warning(disable: 4996)
+  //#pragma warning(disable: 4996 4305)
 #else
   #include <unordered_map>
 #endif
@@ -285,8 +289,10 @@ public:
     int n=m.numCols;
     string key;
     string temp;
-    boost::unordered_map<string, Polynomial> minors;
-    boost::unordered_map<string, Polynomial> newDet;
+    //boost::unordered_map<string, Polynomial> minors;
+    unordered_map<string, Polynomial> minors;
+    //boost::unordered_map<string, Polynomial> newDet;
+    unordered_map<string, Polynomial> newDet;
     for(int i=0; i<n; i++)
     {
       temp.clear();
@@ -1000,6 +1006,6 @@ inline std::ostream& operator<<(std::ostream& of, const Matrix &m)
 }
 
 #if defined(_WIN32) || defined(_WIN64)
-#pragma warning(pop)
+  #pragma warning(pop)
 #endif
 

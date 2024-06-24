@@ -17,11 +17,12 @@ libs =
 
 # needs apt-get install gcc-multilib g++-multilib
 INCLUDES = -I../inc
-CXXFLAGS=-DNDEBUG -DLIBHUPF_EXPORTS -O3 -g -s -flto -Wall -Wextra -m32 -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-parentheses -Wno-unused-function -fopenmp -std=c++11
-# -std=c++98 
+CXXFLAGS=-DNDEBUG -DLIBHUPF_EXPORTS -Os -g -s -Wall -Wextra -m32 -Wno-unknown-pragmas -Wno-deprecated-declarations -Wno-parentheses -Wno-unused-function -fopenmp -std=c++11
+# -std=c++98 -flto 
 
 #link flags
-LDFLAGS = -fno-use-linker-plugin -lstdc++
+LDFLAGS = -lstdc++
+#-fno-use-linker-plugin 
 
 # rule to generate a dep file by using the C preprocessor
 # (see man cpp for details on the -MM and -MT options)

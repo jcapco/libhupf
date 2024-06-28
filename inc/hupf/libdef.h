@@ -13,4 +13,5 @@
     #define LIBHUPF_LIBRARY_INTERFACE __attribute__((__visibility__("default")))
   #else 
     #define LIBHUPF_LIBRARY_INTERFACE
+  #endif
 #endif

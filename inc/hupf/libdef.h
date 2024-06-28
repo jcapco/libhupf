@@ -1,12 +1,13 @@
 #pragma once
 
-#if defined(_MSC_VER) && defined(_WIN32)
+//ined(_MSC_VER) && 
+
+#if defined(_WIN32) || defined(_WIN64)
   #ifdef LIBHUPF_EXPORTS
     #define LIBHUPF_LIBRARY_INTERFACE __declspec(dllexport)
   #else
     #define LIBHUPF_LIBRARY_INTERFACE __declspec(dllimport)
   #endif
 #else
-  #define LIBHUPF_LIBRARY_INTERFACE
+  #define LIBHUPF_LIBRARY_INTERFACE export
 #endif
-

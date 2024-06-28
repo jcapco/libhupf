@@ -9,5 +9,5 @@
     #define LIBHUPF_LIBRARY_INTERFACE __declspec(dllimport)
   #endif
 #else
-  #define LIBHUPF_LIBRARY_INTERFACE export
+  #define LIBHUPF_LIBRARY_INTERFACE extern
 #endif

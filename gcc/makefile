@@ -8,7 +8,7 @@ CC = g++
 src = $(filter-out ../src/empty.cpp, $(wildcard ../src/*.cpp))
 
 objdir=./release
-dllfile=$(objdir)/libhupf.a
+dllfile=$(objdir)/libhupf.so
 _obj1 = $(patsubst %.cpp,%.o,$(src))
 obj = $(patsubst %.o,$(objdir)/%.o,$(notdir $(_obj1)))
 libs = 

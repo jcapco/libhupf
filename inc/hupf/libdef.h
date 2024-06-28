@@ -9,5 +9,8 @@
     #define LIBHUPF_LIBRARY_INTERFACE __declspec(dllimport)
   #endif
 #else
-  #define LIBHUPF_LIBRARY_INTERFACE extern
+  #ifdef LIBHUPF_EXPORTS
+    #define LIBHUPF_LIBRARY_INTERFACE __attribute__((__visibility__("default")))
+  #else 
+    #define LIBHUPF_LIBRARY_INTERFACE
 #endif

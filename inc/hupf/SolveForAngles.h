@@ -195,7 +195,7 @@ public:
 
     //jcapco todo: we can make some nice shortcuts if the desired value is prismatic value (not half-tangent from rotational joint)
     vector<pair<double,double> > realRoots = calculateRoots(e1,e2,kin.r[0],kin.r[1]);
-    int numberofSolutions = realRoots.size();
+    int numberofSolutions = int(realRoots.size());
     //cout << "Number of dSolutions: " << numberofSolutions << endl;
 
     vector<vector<double> > final_v = findAllAngles(realRoots, hyperplane, kin);
@@ -238,7 +238,7 @@ public:
   **/
   static vector<vector<double> > findAllAngles(vector<pair<double,double> > va, Hyperplane &hyperplane, KinematicSurface &kin)
   {
-    int numberOfSolutions = va.size();
+    int numberOfSolutions = int(va.size());
     vector<vector<double> > final_v;
     int lo[3] = {0,0,0}; //l_order
     
@@ -557,14 +557,14 @@ public:
   **/
   static void sortResults(vector<vector<double> >* results)
   {
-    quickSort(results,0,(*results).size()-1,0);		//sort by first angle
+    quickSort(results,0,int((*results).size())-1,0);		//sort by first angle
 
     for (int k=1; k<6; k++)
     {
       bool distGT0=false;
       double beforeVal=-10.0;
       int dist=0;
-      for (size_t i=0; i<(*results).size(); i++)
+      for (int i=0; i<int((*results).size()); i++)
       {
         if (fabs(((*results)[i])[k-1]-beforeVal)<0.0000001)
           dist++;

@@ -12,6 +12,10 @@
 //for every end effector (12 doubles) compute the angles in radians
 //output angles (double)
 
+#ifndef _MSC_VER
+#include <stdint.h>
+#endif
+
 namespace LibHUPF
 {
 
@@ -54,7 +58,7 @@ LIBHUPF_LIBRARY_INTERFACE int solve_ik(LibHUPF::ik_solver* iks, double* ee, doub
       ret[k++] = sol[i][j];
     }
   }
-  return sol.size();
+  return int(sol.size());
 }
 
 #ifdef __cplusplus

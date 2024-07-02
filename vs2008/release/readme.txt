@@ -1,0 +1,1 @@
+the msvc release versions are saved here

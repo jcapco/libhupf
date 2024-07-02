@@ -14,7 +14,7 @@
 
 #ifndef _MSC_VER
 #include <stdint.h>
-typedef int8_t __int8
+typedef int8_t __int8;
 #endif
 
 namespace LibHUPF

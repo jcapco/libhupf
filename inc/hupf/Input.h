@@ -7,7 +7,6 @@
 #include <fstream>
 #include <iomanip>
 #include <hupf/Matrix.h>
-//#include <utils/math_helpers.h>
 
 namespace Math
 {  

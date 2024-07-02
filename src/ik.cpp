@@ -53,3 +53,11 @@ namespace LibHUPF
     return Calculate::InverseKin(*inp, times);
   }
 }
+
+LIBHUPF_LIBRARY_INTERFACE LibHUPF::ik_solver* create_ik_solver(double* a, double* d, double* theta, double* alpha, __int8* rots)
+{
+  bool brots[6] = {0,0,0,0,0,0};
+  for (size_t i=0; i<6; ++i)
+    if (rots[i]) brots[i] = true;
+  return new LibHUPF::ik_solver(a, d, theta, alpha, brots);
+}

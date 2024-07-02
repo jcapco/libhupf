@@ -171,7 +171,7 @@ public:
   * for general 6R manipulator
   * @param hyperplane The hyperplane input
   * @param kin The KinematicSurface input
-  * @return the results of the problem
+  * @return the results of the problem, in degrees (for rotational angles)!
   **/
   static vector<vector<double> > solveForGeneralCase(Hyperplane &hyperplane, KinematicSurface &kin)
   {

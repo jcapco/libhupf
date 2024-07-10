@@ -61,8 +61,8 @@ public:
   **/
   Matrix (std::vector<double> d)
   {
-    numRows = d.size();
-    numCols = d.size();
+    numRows = int(d.size());
+    numCols = int(d.size());
     hasPolyElements=false;
 
     std::vector<double> tmp;

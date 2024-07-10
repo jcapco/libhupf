@@ -3,6 +3,7 @@
 #include <hupf/Input.h>
 #include <hupf/Calculate.h>
 
+#include <iostream>
 namespace LibHUPF
 {
   using namespace std;
@@ -54,10 +55,33 @@ namespace LibHUPF
   }
 }
 
-LIBHUPF_LIBRARY_INTERFACE LibHUPF::ik_solver* create_ik_solver(double* a, double* d, double* theta, double* alpha, __int8* rots)
+using namespace LibHUPF;
+
+LIBHUPF_LIBRARY_INTERFACE void* create_ik_solver(double* a, double* d, double* theta, double* alpha, __int8* rots)
 {
   bool brots[6] = {0,0,0,0,0,0};
   for (size_t i=0; i<6; ++i)
     if (rots[i]) brots[i] = true;
-  return new LibHUPF::ik_solver(a, d, theta, alpha, brots);
+  return new ik_solver(a, d, theta, alpha, brots);
+}
+
+LIBHUPF_LIBRARY_INTERFACE void destroy_ik_solver(void* iks1)
+{
+  ik_solver* iks = static_cast<ik_solver*>(iks1);
+  delete iks;
+}
+
+LIBHUPF_LIBRARY_INTERFACE int solve_ik(void* iks1, double* ee, double* ret)
+{
+  ik_solver* iks = static_cast<ik_solver*>(iks1);
+  std::vector<std::vector<double>> sol = iks->solve(ee);
+  size_t k=0;
+  for (size_t i=0; i<sol.size(); ++i)
+  {
+    for (size_t j=0; j<sol[i].size();++j)
+    {
+      ret[k++] = sol[i][j];
+    }
+  }
+  return int(sol.size());
 }

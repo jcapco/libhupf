@@ -46,7 +46,7 @@ public:
    * */
   Polynomial(std::vector<double> coeff) : coefficient(coeff)
   {
-    degree = coeff.size()-1;
+    degree = int(coeff.size())-1;
     realCoeffType = true;
   };
 
@@ -122,7 +122,7 @@ public:
    * */
   Polynomial(std::vector<Polynomial> coeff) : polyCoefficient(coeff)
   {
-    degree = coeff.size()-1;
+    degree = int(coeff.size())-1;
     realCoeffType=false;
   }
 

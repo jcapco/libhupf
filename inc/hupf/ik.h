@@ -41,26 +41,11 @@ extern "C"
 { 
 #endif
 
-LIBHUPF_LIBRARY_INTERFACE LibHUPF::ik_solver* create_ik_solver(double* a, double* d, double* theta, double* alpha, __int8* rots);
+LIBHUPF_LIBRARY_INTERFACE void* create_ik_solver(double* a, double* d, double* theta, double* alpha, __int8* rots);
 
-LIBHUPF_LIBRARY_INTERFACE void destroy_ik_solver(LibHUPF::ik_solver* iks)
-{
-  delete iks;
-}
+LIBHUPF_LIBRARY_INTERFACE void destroy_ik_solver(void* iks);
 
-LIBHUPF_LIBRARY_INTERFACE int solve_ik(LibHUPF::ik_solver* iks, double* ee, double* ret)
-{
-  std::vector<std::vector<double>> sol = iks->solve(ee);
-  size_t k=0;
-  for (size_t i=0; i<sol.size(); ++i)
-  {
-    for (size_t j=0; j<sol[i].size();++j)
-    {
-      ret[k++] = sol[i][j];
-    }
-  }
-  return int(sol.size());
-}
+LIBHUPF_LIBRARY_INTERFACE int solve_ik(void* iks, double* ee, double* ret);
 
 #ifdef __cplusplus
 }

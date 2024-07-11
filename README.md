@@ -68,7 +68,7 @@ A. Angerer, J. Capco
 ## Acknowledgement
 
 Many thanks to:
-Saraleen Mae Manongsong, Arthur Angerer, Manfred Husty, Martin Pfurner and Hans-Peter Schröcker.
+Arthur Angerer, Manfred Husty, Saraleen Mae Manongsong, Martin Pfurner and Hans-Peter Schröcker.
 
 ## Citing
  Link to Zenodo DOI: Coming soon after migration to GitHub.
